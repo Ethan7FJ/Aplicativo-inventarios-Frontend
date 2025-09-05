@@ -1,13 +1,15 @@
 "use client"
 
 import home from '../Imgs/home.jpg';
-import {Button} from "@heroui/react";
+import { Button } from "@heroui/react";
 import ModalLogin from './Fragments/ModalLogin';
+import ModalRegister from './Fragments/ModalRegister';
 import { useState } from 'react';
 
 export default function Index() {
-    
-    const [isOpen, setIsOpen] = useState(false)
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenReg, setIsOpenReg] = useState(false);
 
     return (
         <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${home.src})` }}>
@@ -18,7 +20,7 @@ export default function Index() {
                     <label className="text-2xl font-bold text-gray-700">Login</label>
                     <Button
                         className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
-                        onPress={()=>setIsOpen(true)}
+                        onPress={() => setIsOpen(true)}
                     >
                         Ir
                     </Button>
@@ -26,14 +28,20 @@ export default function Index() {
 
                 <div className="flex flex-col items-center space-y-3">
                     <label className="text-2xl font-bold text-gray-700">Registro</label>
-                    <Button className="px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                    <Button
+                        className="px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300"
+                        onPress={() => setIsOpenReg(true)}
+                    >
                         Ir
                     </Button>
                 </div>
             </div>
 
             <>
-                <ModalLogin isOpen={isOpen} onClose={()=>setIsOpen(false)}/>
+                <ModalLogin isOpen={isOpen} onClose={() => setIsOpen(false)} />
+            </>
+            <>
+                <ModalRegister isOpen={isOpenReg} onClose={() => setIsOpenReg(false)} />
             </>
 
         </div>

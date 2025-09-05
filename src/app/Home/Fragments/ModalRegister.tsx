@@ -1,13 +1,14 @@
 "use client";
 
 import { Button, Form } from "@heroui/react";
+import api from "@/app/Service/api";
 
 type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
 };
 
-export default function ModalLogin({ isOpen, onClose }: ModalProps) {
+export default function ModalRegister({ isOpen, onClose }: ModalProps) {
     if (!isOpen) return null;
 
     return (
@@ -18,7 +19,7 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
             />
             <div className="relative bg-white rounded-xl shadow-2xl p-6 w-[400px] z-10">
                 <header>
-                    <h2 className="text-xl font-bold mb-4">Inicio de sesion</h2>
+                    <h2 className="text-xl font-bold mb-4">Registro</h2>
 
                     <button
                         onClick={onClose}
@@ -29,7 +30,20 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
                 </header>
                 <main className="p-5 m-5 border-1 border-gray-200 rounded-large shadow-xl/30 shadow-gray-950 duration-150 hover:scale-102">
                     <div>
-                        <Form>
+                        <Form
+                            onSubmit={(e)=>{
+                                e.preventDefault();
+                                let data = Object.fromEntries(new FormData(e.currentTarget));
+
+                                api.post('/registro',data).then((res)=>{
+                                    alert(`Usuario ${res.data.user.username} registrado con éxito`);
+                                    window.location.reload();
+                                }).catch((err)=>{
+                                    console.log('No se pudo realizar el registro',err)
+                                })
+
+                            }}
+                        >
                             <div className="flex flex-col items-center m-2 p-2">
                                 <label>Usuario</label>
                                 <input
@@ -51,7 +65,7 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
                                 />
                             </div>
                             <div className="flex flex-col items-center">
-                                <Button type="submit" className="border-1 border-gray-200 text-xl p-2 rounded-lg m-4 bg-blue-300 duration-100 hover:scale-120 hover:bg-blue-500 hover:text-white cursor-pointer">Ingresar</Button>
+                                <Button type="submit" className="border-1 border-gray-200 text-xl p-2 rounded-lg m-4 bg-blue-300 duration-100 hover:scale-120 hover:bg-blue-500 hover:text-white cursor-pointer">Registrarse</Button>
                             </div>
                         </Form>
                     </div>
