@@ -1,6 +1,8 @@
 "use client";
 
 import { Button, Form } from "@heroui/react";
+import api from "@/app/Service/api";
+import { useRouter } from "next/navigation";
 
 type ModalProps = {
     isOpen: boolean;
@@ -8,6 +10,7 @@ type ModalProps = {
 };
 
 export default function ModalLogin({ isOpen, onClose }: ModalProps) {
+    const router = useRouter();
     if (!isOpen) return null;
 
     return (
@@ -29,7 +32,20 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
                 </header>
                 <main className="p-5 m-5 border-1 border-gray-200 rounded-large shadow-xl/30 shadow-gray-950 duration-150 hover:scale-102">
                     <div>
-                        <Form>
+                        <Form
+                            onSubmit={(e)=>{
+                                e.preventDefault();
+                                let data = Object.fromEntries(new FormData(e.currentTarget));
+
+                                api.post('/inicio-sesion',data).then((res)=>{
+                                    localStorage.setItem("token",res.data.token)
+                                    router.push("/dashboard"); 
+                                }).catch((err)=>{
+                                    console.log('No se pudo realizar el inicio de sesion',err)
+                                })
+
+                            }}
+                        >
                             <div className="flex flex-col items-center m-2 p-2">
                                 <label>Usuario</label>
                                 <input
