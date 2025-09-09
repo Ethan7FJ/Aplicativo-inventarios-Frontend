@@ -2,8 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import api from "../Service/api";
+import Image from "next/image";
+import userIMG from "../Imgs/user.png"
 import { useState, useEffect } from "react";
 import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
+
+/* Componente */
+import TablaInventario from "./Components/TablaInventario";
 
 export default function DashboardPage() {
     const [user, setUser] = useState<any>(null);
@@ -64,20 +69,20 @@ export default function DashboardPage() {
                         </NavbarItem>
                     </NavbarContent>
                 </Navbar>
-                <h1 className="p-4 bg-gray-700/50 rounded-sm">{user.username}</h1>
+                <div className="p-4 bg-gray-700/50 rounded-sm flex flex-col items-center">
+                    <Image
+                        src={userIMG}
+                        alt="Foto de perfil"
+                        width={50}          // ancho en px
+                        height={50}         // alto en px
+                        className="rounded-full"
+                    />
+                </div>
             </header>
-            <p className="">Bienvenido {user.username}</p>
-
-            <footer>
-                <Button
-                    onPress={() => {
-                        localStorage.removeItem("token");
-                        router.push("/");
-                    }}
-                >
-                    Cerrar sesión
-                </Button>
-            </footer>
+            <main className="m-10 p-5 bg-amber-50">
+                <TablaInventario/>
+                <h1 className="">hola {user.nombre_usuario} {user.apellido_usuario}</h1>
+            </main>
         </div>
     );
 }

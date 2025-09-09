@@ -47,12 +47,12 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
                             }}
                         >
                             <div className="flex flex-col items-center m-2 p-2">
-                                <label>Usuario</label>
+                                <label>Correo Electronico</label>
                                 <input
                                     required
-                                    name="username"
-                                    placeholder="Ingresa tu usuario"
-                                    type="text"
+                                    name="email_usuario"
+                                    placeholder="Ingresa tu correo"
+                                    type="email"
                                     className="text-center p-2 m-2 rounded-lg border-1"
                                 />
                             </div>
@@ -61,7 +61,7 @@ export default function ModalLogin({ isOpen, onClose }: ModalProps) {
                                 <input
                                     required
                                     name="password"
-                                    placeholder="Ingresa tu usuario"
+                                    placeholder="Ingresa tu contraseña"
                                     type="password"
                                     className="text-center p-2 m-2 rounded-lg border-1"
                                 />

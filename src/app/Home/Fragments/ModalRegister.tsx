@@ -31,26 +31,46 @@ export default function ModalRegister({ isOpen, onClose }: ModalProps) {
                 <main className="p-5 m-5 border-1 border-gray-200 rounded-large shadow-xl/30 shadow-gray-950 duration-150 hover:scale-102">
                     <div>
                         <Form
-                            onSubmit={(e)=>{
+                            onSubmit={(e) => {
                                 e.preventDefault();
                                 let data = Object.fromEntries(new FormData(e.currentTarget));
 
-                                api.post('/registro',data).then((res)=>{
-                                    alert(`Usuario ${res.data.user.username} registrado con éxito`);
+                                api.post('/registro', data).then((res) => {
+                                    alert(`Usuario ${res.data.user.nombre_usuario} registrado con éxito`);
                                     window.location.reload();
-                                }).catch((err)=>{
-                                    console.log('No se pudo realizar el registro',err)
+                                }).catch((err) => {
+                                    console.log('No se pudo realizar el registro', err)
                                 })
 
                             }}
                         >
                             <div className="flex flex-col items-center m-2 p-2">
-                                <label>Usuario</label>
+                                <label>Primer Nombre</label>
                                 <input
                                     required
-                                    name="username"
-                                    placeholder="Ingresa tu usuario"
+                                    name="nombre_usuario"
+                                    placeholder="Ingresa tu nombre"
                                     type="text"
+                                    className="text-center p-2 m-2 rounded-lg border-1"
+                                />
+                            </div>
+                            <div className="flex flex-col items-center m-2 p-2">
+                                <label>Primer Apellido</label>
+                                <input
+                                    required
+                                    name="apellido_usuario"
+                                    placeholder="Ingresa tu apellido"
+                                    type="text"
+                                    className="text-center p-2 m-2 rounded-lg border-1"
+                                />
+                            </div>
+                            <div className="flex flex-col items-center m-2 p-2">
+                                <label>Correo Electronico</label>
+                                <input
+                                    required
+                                    name="email_usuario"
+                                    placeholder="Ingresa tu correo"
+                                    type="email"
                                     className="text-center p-2 m-2 rounded-lg border-1"
                                 />
                             </div>
