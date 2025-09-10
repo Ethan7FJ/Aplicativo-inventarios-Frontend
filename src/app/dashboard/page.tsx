@@ -10,6 +10,9 @@ import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 /* Componente */
 import TablaInventario from "./Components/TablaInventario";
 
+/* Fragments */
+import ButtonCreat from "./Fragments/ButtomCreate";
+
 export default function DashboardPage() {
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
@@ -80,8 +83,8 @@ export default function DashboardPage() {
                 </div>
             </header>
             <main className="m-10 p-5 bg-amber-50">
-                <TablaInventario/>
-                <h1 className="">hola {user.nombre_usuario} {user.apellido_usuario}</h1>
+                <TablaInventario />
+                <ButtonCreat user={user}/>
             </main>
         </div>
     );
