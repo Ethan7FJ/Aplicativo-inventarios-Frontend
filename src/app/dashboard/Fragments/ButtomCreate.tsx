@@ -1,27 +1,26 @@
 "use client";
 
 import { Button } from "@heroui/react";
-import ModalAñadirProducto from "./Modals/ModalAñadirProducto";
-import { useState, useEffect} from "react";
+import ModalAnadirProducto from "./Modals/ModalAñadirProducto";
+import { useState, useEffect } from "react";
 
 
-type ModalProps = {
-    user: string;
-};
+export default function ButtonCreat({ user }: {user:any}) {
 
-export default function ButtonCreat({user}: ModalProps) {
-
-    const [isOpen,setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
-            <Button onPress={()=> setIsOpen(true)}>
+            <Button onPress={() => setIsOpen(true)} className="m-4 p-3 border border-gray-200 rounded-lg inset-shadow-sm inset-shadow-gray-500
+         bg-gray-200 transform transition duration-150 
+         active:scale-95 active:bg-gray-300">
                 Añadir Producto
             </Button>
 
-            <>
-                <ModalAñadirProducto isOpen={isOpen} onClose={() => setIsOpen(false)} user={user}/>
-            </>
+                <ModalAnadirProducto
+                    isOpen={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    user={user} />
         </div>
     )
 }

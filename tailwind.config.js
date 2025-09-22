@@ -1,5 +1,3 @@
-import { heroui } from "@heroui/react";
-
 module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}", // Asegúrate de incluir tus rutas
@@ -8,6 +6,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  darkMode: "class", // Si quieres soportar modo oscuro
-  plugins: [heroui()],
+  plugins: [
+
+  ],
 };

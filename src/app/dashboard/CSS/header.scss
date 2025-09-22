@@ -1,0 +1,43 @@
+.Inventario {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer; 
+  color: black;
+
+  &:hover {
+    animation: escala 1s ease forwards;
+  }
+
+  &:not(:hover) {
+    animation: escala-reversa 1s ease forwards;
+  }
+}
+
+// Animación hacia adelante
+@keyframes escala {
+  0% {
+    color: black;
+  }
+  50% {
+    background: rgb(64, 64, 64);
+  }
+  100% {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+}
+
+// Animación en reversa
+@keyframes escala-reversa {
+  0% {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+  50% {
+    background: rgb(64, 64, 64);
+  }
+  100% {
+    color: black;
+  }
+}

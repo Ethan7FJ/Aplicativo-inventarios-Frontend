@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import api from "@/app/Service/api";
 import { Button, Form } from "@heroui/react";
+import { motion } from "framer-motion";
 
 type ModalProps = {
     isOpen: boolean;
@@ -20,7 +21,7 @@ type Proveedor = {
     nombre: string;
 };
 
-export default function ModalAñadirProducto({ isOpen, onClose, user }: ModalProps) {
+export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProps) {
     if (!isOpen) return null;
 
     const [categorias, setCategorias] = useState<Categoria[]>([]);
