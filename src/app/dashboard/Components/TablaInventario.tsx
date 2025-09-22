@@ -1,16 +1,15 @@
 "use client";
 
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@heroui/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button } from "@heroui/react";
 import { use, useEffect, useState } from "react";
 import api from "@/app/Service/api";
 
-import * as ContextMenu from "@radix-ui/react-context-menu";
-import { AlertDialog } from "@radix-ui/react-alert-dialog";
-import { exit } from "process";
+/* import * as ContextMenu from "@radix-ui/react-context-menu"; */
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 type Productos = {
     id: number,
-    serial_producto: number,
+    serial_producto: string,
     nombre_producto: string,
     descripcion_producto: string,
     cantidad_producto: number,
@@ -43,11 +42,11 @@ export default function TablaInventario() {
             api.delete(`/borrar/producto/${id}`).then((res) => {
                 alert(res.data.mensaje)
                 setProductos((prev) => prev.filter((p) => p.id !== id));
-            }).catch((err)=>{
-                console.log("Hubo un error",err)
+            }).catch((err) => {
+                console.log("Hubo un error", err)
             })
-        }else{
-            exit;
+        } else {
+            return
         }
     }
 
@@ -81,26 +80,33 @@ export default function TablaInventario() {
                             <TableCell className="px-4 py-2">{item.nombre}</TableCell>
                             <TableCell className="px-4 py-2">{item.nombre_usuario} {item.apellido_usuario}</TableCell>
                             <TableCell className="px-4 py-2">
-                                <ContextMenu.Root>
-                                    {/* Área donde se activa el menú */}
-                                    <ContextMenu.Trigger className="p-2 flex items-center justify-center border rounded bg-gray-100">
-                                        Haz clic derecho aquí
-                                    </ContextMenu.Trigger>
+                                <DropdownMenu.Root>
+                                    <DropdownMenu.Trigger asChild>
+                                        <Button>
+                                            More Options
+                                        </Button>
+                                    </DropdownMenu.Trigger>
 
-                                    {/* Contenido del menú */}
-                                    <ContextMenu.Content className="min-w-[200px] bg-white rounded-md shadow-md p-1 border">
-                                        <ContextMenu.Item className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer">
+                                    <DropdownMenu.Content className="min-w-[200px] bg-white rounded-md shadow-md p-1 border z-50">
+                                        <DropdownMenu.Item
+                                            className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
+                                        >
                                             🔍 Ver detalles
-                                        </ContextMenu.Item>
-                                        <ContextMenu.Item className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer">
+                                        </DropdownMenu.Item>
+                                        <DropdownMenu.Item
+                                            className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
+                                        >
                                             ✏️ Editar
-                                        </ContextMenu.Item>
-                                        <ContextMenu.Item className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer" onClick={() => BorrarProducto({ id: item.id })}>
+                                        </DropdownMenu.Item>
+                                        <DropdownMenu.Item
+                                            className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
+                                            onClick={() => BorrarProducto({ id: item.id })}
+                                        >
                                             🗑️ Eliminar
-                                        </ContextMenu.Item>
+                                        </DropdownMenu.Item>
+                                    </DropdownMenu.Content>
+                                </DropdownMenu.Root>
 
-                                    </ContextMenu.Content>
-                                </ContextMenu.Root>
                             </TableCell>
                         </TableRow>
                     ))}

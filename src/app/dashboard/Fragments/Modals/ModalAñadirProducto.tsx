@@ -78,8 +78,10 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                                 required
                                 name="serial_producto"
                                 placeholder="Ingresa el serial"
-                                type="number"
+                                type="text"
                                 className="text-center p-2 mt-1 rounded-lg border"
+                                maxLength={17}
+                                pattern="\d*"
                             />
                         </div>
 
@@ -168,7 +170,6 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                         <div className="flex flex-col">
                             <label>Imagen del producto</label>
                             <input
-                                required
                                 name="imagen"
                                 type="file"
                                 accept="image/*"
