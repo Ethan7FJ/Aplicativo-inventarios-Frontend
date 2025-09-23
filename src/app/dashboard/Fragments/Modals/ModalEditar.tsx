@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import api from "@/app/Service/api";
 import { Button, Form } from "@heroui/react";
-import { motion } from "framer-motion";
 
 type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    user: any;
+    producto: any;
 };
 
 type Categoria = {
@@ -21,7 +20,7 @@ type Proveedor = {
     nombre: string;
 };
 
-export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProps) {
+export default function ModalEditar({ isOpen, onClose, producto}: ModalProps) {
     if (!isOpen) return null;
 
     const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -47,7 +46,7 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
             />
             <div className="relative bg-white rounded-xl shadow-2xl w-[90%] max-w-[500px] max-h-[90vh] flex flex-col z-10">
                 <header className="flex justify-between items-center p-4 border-b">
-                    <h2 className="text-xl font-bold">Añadir Producto</h2>
+                    <h2 className="text-xl font-bold">Editar Producto</h2>
                     <button
                         onClick={onClose}
                         className="text-gray-500 duration-100 hover:text-black hover:scale-110 cursor-pointer"
@@ -62,7 +61,7 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             let data = Object.fromEntries(new FormData(e.currentTarget));
 
                             api
-                                .post("/registro-productos", data)
+                                .put(`/editar/producto/${producto.id}`, data)
                                 .then((res) => {
                                     alert(`${res.data.alerta}`);
                                     window.location.reload();
@@ -77,6 +76,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="serial_producto"
+                                aria-label={`Eliminar ${producto?.serial_producto}`}
+                                defaultValue={producto?.serial_producto || ''}
                                 placeholder="Ingresa el serial"
                                 type="text"
                                 className="text-center p-2 mt-1 rounded-lg border"
@@ -90,6 +91,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="nombre_producto"
+                                aria-label={`Eliminar ${producto?.nombre_producto}`}
+                                defaultValue={producto?.nombre_producto || ''}
                                 placeholder="Nombre del producto"
                                 type="text"
                                 className="text-center p-2 mt-1 rounded-lg border"
@@ -101,6 +104,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <textarea
                                 required
                                 name="descripcion_producto"
+                                aria-label={`Eliminar ${producto?.descripcion_producto}`}
+                                defaultValue={producto?.descripcion_producto || ''}
                                 placeholder="Descripcion"
                                 className="text-center p-2 mt-1 rounded-lg border"
                             />
@@ -111,6 +116,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="cantidad_producto"
+                                aria-label={`Eliminar ${producto?.cantidad_producto}`}
+                                defaultValue={producto?.cantidad_producto || ''}
                                 placeholder="Cantidad"
                                 type="number"
                                 className="text-center p-2 mt-1 rounded-lg border"
@@ -121,7 +128,7 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <label>Selecciona la categoria</label>
                             <select
                                 name="id_categoria"
-                                className="p-2 mt-1 rounded-lg border"
+                                className="p-2 mt-1 rounded-lg border"                               
                             >
                                 <option>Selecciona uno</option>
                                 {categorias.map((item) => (
@@ -137,6 +144,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="stock"
+                                aria-label={`Eliminar ${producto?.stock}`}
+                                defaultValue={producto?.stock || ''}
                                 placeholder="Stock"
                                 type="number"
                                 className="text-center p-2 mt-1 rounded-lg border"
@@ -148,6 +157,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="costo_unitario"
+                                aria-label={`Eliminar ${producto?.costo_unitario}`}
+                                defaultValue={producto?.costo_unitario || ''}
                                 placeholder="Costo ej: 33.00"
                                 type="number"
                                 step="0.01"
@@ -160,6 +171,8 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                             <input
                                 required
                                 name="precio_venta"
+                                aria-label={`Eliminar ${producto?.precio_venta}`}
+                                defaultValue={producto?.precio_venta || ''}
                                 placeholder="Precio ej:33.00"
                                 type="number"
                                 step="0.01"
@@ -191,22 +204,6 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                                 ))}
                             </select>
                         </div>
-
-                        <div className="flex flex-col">
-                            <label>Responsable del registro</label>
-                            <input
-                                type="text"
-                                value={`${user.nombre_usuario} ${user.apellido_usuario}`}
-                                className="text-center p-2 mt-1 rounded-lg border bg-gray-100"
-                                readOnly
-                            />
-                            <input
-                                type="hidden"
-                                name="id_user"
-                                value={user.id}
-                            />
-                        </div>
-
                         <div className="flex justify-center mt-4">
                             <Button
                                 type="submit"

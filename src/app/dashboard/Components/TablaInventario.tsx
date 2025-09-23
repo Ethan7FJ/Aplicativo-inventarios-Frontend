@@ -3,6 +3,7 @@
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button } from "@heroui/react";
 import { use, useEffect, useState } from "react";
 import api from "@/app/Service/api";
+import ModalEditar from "../Fragments/Modals/ModalEditar";
 
 /* import * as ContextMenu from "@radix-ui/react-context-menu"; */
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -50,6 +51,10 @@ export default function TablaInventario() {
         }
     }
 
+    /* Modal Editar Producto */
+    const [isOpen, setIsOpen] = useState(false);
+    const [productoSelect, setProductoSelect] = useState<any>(null);
+
     return (
         <div>
             <Table aria-label="Example static collection table" className="min-w-full border border-gray-200 rounded-lg shadow-md">
@@ -90,11 +95,13 @@ export default function TablaInventario() {
                                     <DropdownMenu.Content className="min-w-[200px] bg-white rounded-md shadow-md p-1 border z-50">
                                         <DropdownMenu.Item
                                             className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
+
                                         >
                                             🔍 Ver detalles
                                         </DropdownMenu.Item>
                                         <DropdownMenu.Item
                                             className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
+                                            onClick={() => { setProductoSelect(item); setIsOpen(true); }}
                                         >
                                             ✏️ Editar
                                         </DropdownMenu.Item>
@@ -112,6 +119,10 @@ export default function TablaInventario() {
                     ))}
                 </TableBody>
             </Table>
+
+
+            <ModalEditar isOpen={isOpen} onClose={() => setIsOpen(false)} producto={productoSelect}/>
+
         </div>
     )
 }
