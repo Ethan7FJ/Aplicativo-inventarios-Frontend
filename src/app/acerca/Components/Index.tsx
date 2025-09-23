@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
+import { Navbar, NavbarContent, NavbarItem, Link, Button, CircularProgress } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import api from "@/app/Service/api";
 import { useState, useEffect } from "react";
@@ -11,6 +11,11 @@ import userIMG from "../../Imgs/user.png"
 import lk from "../../dashboard/Imgs/FooterImg/linkedin.png"
 import gm from "../../dashboard/Imgs/FooterImg/gmail.png"
 import git from "../../dashboard/Imgs/FooterImg/github.png"
+
+
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
+import InfoApp from "../Fragments/InfoAPP";
+import MyInfo from "../Fragments/MyInfo";
 
 export default function Index() {
     const [user, setUser] = useState<any>(null);
@@ -38,7 +43,7 @@ export default function Index() {
     }, [router]);
 
     if (!user) {
-        return <p className="text-center p-5">Cargando ....</p>;
+        return <CircularProgress aria-label="Loading..." />;
     }
 
     return (
@@ -83,7 +88,32 @@ export default function Index() {
                 </div>
             </header>
             <main className="flex-1 m-10 p-5 rounded-xl inset-shadow-sm inset-shadow-black/50">
+                <Tabs
+                    aria-label="Options"
+                    color="primary"
+                    variant="bordered"
+                    classNames={{
+                        tabList: "gap-4 bg-white shadow-md rounded-xl px-4 py-2",
+                        tab: "px-6 py-2 text-md font-medium text-gray-600 hover:text-cyan-600",
+                        tabContent: "group-data-[selected=true]:text-cyan-700",
+                    }}
+                >
+                    <Tab key="app" title="App Info">
+                        <Card className="shadow-lg border border-gray-100">
+                            <CardBody className="p-6">
+                                <InfoApp />
+                            </CardBody>
+                        </Card>
+                    </Tab>
 
+                    <Tab key="info" title="More Info">
+                        <Card className="shadow-lg border border-gray-100">
+                            <CardBody className="p-6">
+                                <MyInfo />
+                            </CardBody>
+                        </Card>
+                    </Tab>
+                </Tabs>
             </main>
             <footer className="w-full h-16 bg-cyan-950/40 shadow-inner flex items-center justify-center p-3">
                 <div className="flex gap-[20px] flex-wrap items-center">

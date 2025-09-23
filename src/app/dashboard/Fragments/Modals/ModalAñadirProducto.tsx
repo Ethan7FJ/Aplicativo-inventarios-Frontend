@@ -212,7 +212,7 @@ export default function ModalAnadirProducto({ isOpen, onClose, user }: ModalProp
                                 type="submit"
                                 className="w-full border border-gray-200 text-lg p-2 rounded-lg bg-blue-500 text-white duration-150 hover:scale-105 hover:bg-blue-600"
                             >
-                                Registrar
+                                Añadir
                             </Button>
                         </div>
                     </Form>

@@ -92,13 +92,7 @@ export default function TablaInventario() {
                                         </Button>
                                     </DropdownMenu.Trigger>
 
-                                    <DropdownMenu.Content className="min-w-[200px] bg-white rounded-md shadow-md p-1 border z-50">
-                                        <DropdownMenu.Item
-                                            className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
-
-                                        >
-                                            🔍 Ver detalles
-                                        </DropdownMenu.Item>
+                                    <DropdownMenu.Content className="min-w-[200px] bg-white rounded-md shadow-md p-1 border z-50">                                       
                                         <DropdownMenu.Item
                                             className="px-3 py-2 rounded hover:bg-gray-200 cursor-pointer"
                                             onClick={() => { setProductoSelect(item); setIsOpen(true); }}

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import api from "@/app/Service/api";
 import { useState, useEffect } from "react";
-import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
+import { Navbar, NavbarContent, NavbarItem, Link, Button, CircularProgress} from "@heroui/react";
 
 /* Componente */
 import TablaInventario from "./TablaInventario";
@@ -44,7 +44,7 @@ export default function Index() {
     }, [router]);
 
     if (!user) {
-        return <p className="text-center p-5">Cargando ....</p>;
+        return <CircularProgress aria-label="Loading..." />;
     }
 
     return (
