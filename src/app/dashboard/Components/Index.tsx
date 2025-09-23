@@ -5,8 +5,6 @@ import api from "@/app/Service/api";
 import { useState, useEffect } from "react";
 import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 
-import "../CSS/header.scss"
-
 /* Componente */
 import TablaInventario from "./TablaInventario";
 
@@ -55,13 +53,13 @@ export default function Index() {
                 <Navbar position="static" className="">
                     <NavbarContent className="hidden sm:flex gap-4" justify="center">
                         <NavbarItem>
-                            <Link color="foreground" className="Inventario">
-                                Inventrario
+                            <Link color="foreground">
+                                <Button className="p-2 rounded-sm text-lg text-white cursor-no-drop duration-150 hover:bg-cyan-600 transform transition hover:scale-110">Inventario</Button>
                             </Link>
                         </NavbarItem>
                         <NavbarItem>
-                            <Link color="foreground" className="p-2 rounded-sm text-lg duration-300 hover:text-white hover:bg-gray-900/80" href="/acerca">
-                                Acerca de
+                            <Link color="foreground" href="/acerca">
+                                <Button className="p-2 rounded-sm text-lg text-white hover:bg-cyan-600 transform transition duration-150 active:scale-75 active:inset-shadow-sm active:inset-shadow-cyan-90000">Acerca de</Button>
                             </Link>
                         </NavbarItem>
                     </NavbarContent>
@@ -72,7 +70,7 @@ export default function Index() {
                                     localStorage.removeItem("token");
                                     router.push("/");
                                 }}
-                                className="text-lg p-2 duration-300 hover:bg-red-400 hover:rounded-lg"
+                                className="text-lg p-2 duration-300 hover:bg-red-400 hover:rounded-lg text-white"
                             >
                                 Cerrar sesión
                             </Button>

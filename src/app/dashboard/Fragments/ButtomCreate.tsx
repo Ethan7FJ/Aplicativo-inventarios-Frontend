@@ -5,22 +5,23 @@ import ModalAnadirProducto from "./Modals/ModalAñadirProducto";
 import { useState, useEffect } from "react";
 
 
-export default function ButtonCreat({ user }: {user:any}) {
+export default function ButtonCreat({ user }: { user: any }) {
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
-            <Button onPress={() => setIsOpen(true)} className="m-4 p-3 border border-gray-200 rounded-lg inset-shadow-sm inset-shadow-gray-500
-         bg-gray-200 transform transition duration-150 
-         active:scale-95 active:bg-gray-300">
+            <Button onPress={() => setIsOpen(true)} className="m-4 p-3 border border-gray-200 rounded-lg 
+            inset-shadow-sm inset-shadow-gray-500
+         bg-gray-200 transform transition duration-200 
+         active:scale-75 active:bg-gray-300">
                 Añadir Producto
             </Button>
 
-                <ModalAnadirProducto
-                    isOpen={isOpen}
-                    onClose={() => setIsOpen(false)}
-                    user={user} />
+            <ModalAnadirProducto
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+                user={user} />
         </div>
     )
 }

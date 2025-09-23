@@ -44,16 +44,16 @@ export default function Index() {
     return (
         <div className="flex flex-col min-h-screen">
             <header className="w-full h-20 bg-cyan-950/80 shadow-lg flex items-center px-6">
-                <Navbar position="static" className="rounded-sm border-b-1 border-r-1 border-gray-900/50 shadow-2xl shadow-gray-900/50">
+                <Navbar position="static" >
                     <NavbarContent className="hidden sm:flex gap-4" justify="center">
                         <NavbarItem>
-                            <Link color="foreground" className="p-2 rounded-sm text-lg duration-300 hover:text-white hover:bg-gray-900/80" href="/dashboard">
-                                Inventrario
+                            <Link color="foreground" href="/dashboard">
+                                <Button className="p-2 rounded-sm text-lg text-white hover:bg-cyan-600 transform transition duration-150 active:scale-75 active:inset-shadow-sm active:inset-shadow-cyan-90000">Inventrario</Button>
                             </Link>
                         </NavbarItem>
                         <NavbarItem>
-                            <Link color="foreground" className="bg-gray-300/50 p-2 rounded-sm text-lg border-b-1 border-l-1 border-r-1 border-gray-600/50" >
-                                Acerca de
+                            <Link color="foreground">
+                                <Button className="p-2 rounded-sm text-lg text-white cursor-no-drop duration-150 hover:bg-cyan-600 transform transition hover:scale-110">Acerca de</Button>
                             </Link>
                         </NavbarItem>
                     </NavbarContent>
