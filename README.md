@@ -27,7 +27,7 @@ TypeScript / JavaScript
 
 Clona este repositorio en tu máquina local:
 
-git clone https://github.com/tu-usuario/inventory-crud-app.git
+git clone https://github.com/Ethan7FJ/Aplicativo-inventarios-Frontend.git
 cd inventory-crud-app
 
 
@@ -52,13 +52,12 @@ La aplicación estará disponible en:
 app/                # Páginas y rutas con Next.js 13+
 components/         # Componentes reutilizables
 services/           # Lógica de conexión con el backend
-types/              # Tipado (si usas TS)
 public/             # Imágenes y assets
 
 📡 Backend
 
 Este proyecto está conectado a un backend desarrollado con Node.js (Express) + MySQL (repositorio separado).
-👉 Enlace al backend (si lo tienes en GitHub)
+👉 Enlace al backend (https://github.com/Ethan7FJ/Aplicativo-inventarios-Backend.git)
 
 📬 Contacto
 
