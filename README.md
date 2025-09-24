@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📦 Inventory CRUD App (Frontend)
 
-## Getting Started
+Aplicación web de gestión de inventarios desarrollada con Next.js 13+.
+Permite crear, leer, actualizar y eliminar (CRUD) productos de un inventario de manera sencilla y eficiente.
 
-First, run the development server:
+🚀 Tecnologías utilizadas
 
-```bash
+Next.js 13+ (con app directory)
+
+React
+
+TailwindCSS
+
+NextUI (componentes UI)
+
+TypeScript / JavaScript
+
+⚙️ Funcionalidades
+
+✅ Crear nuevos productos
+✅ Editar productos existentes
+✅ Eliminar productos
+✅ Visualización de la lista de inventario
+✅ Interfaz moderna y responsiva
+
+🖥️ Instalación y uso
+
+Clona este repositorio en tu máquina local:
+
+git clone https://github.com/tu-usuario/inventory-crud-app.git
+cd inventory-crud-app
+
+
+Instala las dependencias:
+
+npm install
+# o
+yarn install
+
+
+Ejecuta el servidor de desarrollo:
+
 npm run dev
-# or
+# o
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+La aplicación estará disponible en:
+👉 http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📂 Estructura del proyecto
+app/                # Páginas y rutas con Next.js 13+
+components/         # Componentes reutilizables
+services/           # Lógica de conexión con el backend
+types/              # Tipado (si usas TS)
+public/             # Imágenes y assets
 
-## Learn More
+📡 Backend
 
-To learn more about Next.js, take a look at the following resources:
+Este proyecto está conectado a un backend desarrollado con Node.js (Express) + MySQL (repositorio separado).
+👉 Enlace al backend (si lo tienes en GitHub)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📬 Contacto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👨‍💻 Desarrollado por Johan Ruiz – Desarrollador Web Junior
 
-## Deploy on Vercel
+✉️ Email: johanfetecua11@gmail.com
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🌐 GitHub: github.com/Ethan7FJ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+💼 LinkedIn: linkedin.com/in/johan-fetecua-23a026358
